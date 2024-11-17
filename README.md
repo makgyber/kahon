@@ -27,3 +27,15 @@ I haven't really tried using this for work yet, but have been using it for chatt
 ## Case
 
 I still haven't learned 3D modelling to print my own cases, but this is something I would like to start doing soon.
+
+## Customizing the keymap
+
+1. Setup your local development following the instructions from here: https://zmk.dev/docs/development/local-toolchain/setup
+2. Create a new `kahon` folder in `app/boards/shields/`.
+3. Copy the files inside the `zmk` from this repository into your newly created folder.
+4. From inside the `app` folder run this on the terminal
+   ```sh
+   west -p build -d build/kahon -b nice_nano_v2 -- -DSHIELD=kahon
+   ```
+5. If compile is successful, you should find a `zmk.uf2` file inside `app/build/kahon/zephyr`
+6. Flash the board with the `zmk.uf2`
