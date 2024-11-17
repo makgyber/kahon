@@ -27,7 +27,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp J &kp O &kp N &kp N9 &kp N9 >
+                = <&macro_tap &kp J &kp O &kp N >
                 ;
         };
         arw: arw {
@@ -60,16 +60,7 @@
             >;
         };
         
-        // default_layer {
-        //     bindings = <
-                         
-        //         &kp   P     &kp  W         &kp    R         &kp  A        &kp  F     
-        //         &kp   D     &kp  T          &kp  H         &kp   E        &kp  O
-        //        &kp  Y       &kp   S     &kp  N          &kp   I         &kp  U                
 
-        //         &hm LSHFT RET      &lt NAV DEL    &tog SYM  &lt NUM BKSP    &lt AL2 SPACE                   
-        //     >;
-        // };
 
 
         alpha2_layer {
