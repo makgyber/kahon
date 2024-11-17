@@ -1,0 +1,11 @@
+file_format: "1"
+id: kahon_split
+name: kahon_split 
+type: shield
+url: https://github.com/makgyber/zmk-config
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - kahon_left
+  - kahon_right

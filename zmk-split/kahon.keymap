@@ -1,0 +1,100 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define AL1 0
+#define NUM 1
+#define NAV 2
+#define SYS 3
+
+
+
+/ {
+
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <225>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_bspc {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp BSPC>;
+        };
+    };
+
+    macros {
+        jon: jon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp J &kp O &kp N &kp N9 &kp N9 >
+                ;
+        };
+        arrow: arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp MINUS &kp GT >
+                ;
+        };
+        darrow: darrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp EQUAL &kp GT >
+                ;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                         
+                 &kp P    &kp  W    &kp  D   &kp   L     &kp  Z       &kp Q   &kp U   &kp O      &kp Y  &kp B 
+                &kp   N   &kp   S    &kp  T   &kp  H     &kp K          &kp J    &kp A  &kp E    &kp I   &kp C 
+                &kp  V     &kp F       &kp  G   &kp   M   &kp  X        &kp QUOT   &kp R  &kp COMMA  &kp DOT    &kp SEMI        
+                &hm  LSHFT SPACE   &kp LCTRL  &kp  LALT    &lt NAV R   &hm LGUI  RET    &hm  LSHFT SPACE   &lt NUM BSPC  &kp RALT  &kp RCTRL   &hm LGUI  RET
+            >;
+        };
+
+        num_layer {
+            bindings = <
+                &kp EXCL   &kp AT   &kp HASH   &kp DOLLAR   &kp PERCENT           &kp CARET   &kp AMPS   &kp STAR   &kp LPAR   &kp RPAR  
+                &kp N1   &kp N2   &kp N3   &kp N4   &kp N5                          &kp N6   &kp N7  &kp N8   &kp N9   &kp N0  
+                &kp F1   &kp F2   &kp F3   &kp F5   &kp F12                     &kp LT   &kp GT   &kp TILDE   &kp FSLH   &kp QMARK 
+                 &trans   &trans  &trans   &trans   &trans                     &trans &trans   &trans &trans   &trans
+            >;
+        };
+
+        nav_layer {
+            bindings = <
+                &kp ESC   &kp DEL   &kp UP  &kp BSPC    &jon                &kp PIPE    &kp BSLH  &kp UNDER   &kp PLUS   &kp DQT
+                &kp TAB   &kp LEFT   &kp DOWN   &kp RIGHT   &arrow           &kp LBRC   &kp RBRC   &kp MINUS   &kp EQUAL    &kp SQT  
+                &kp LCTRL   &kp LALT   &kp LSHFT   &kp GRAVE   &darrow       &kp LBKT   &kp RBKT   &kp RGUI   &kp RALT   &kp RCTRL
+                &trans   &trans  &trans   &trans   &trans                     &trans   &trans   &trans   &trans   &trans
+            >;
+        };
+
+        system_layer {
+            bindings = <
+                 &trans &trans   &trans  &trans   &trans                     &trans   &trans   &trans   &trans   &trans
+                 &trans   &trans  &trans   &trans  &trans                    &trans   &trans   &trans   &trans   &trans
+                 &bt BT_PRV  &bt BT_NXT   &trans   &bt BT_CLR   &trans       &trans    &bt BT_CLR    &trans    &bt BT_PRV   &bt BT_NXT  
+                 &trans   &trans  &trans   &trans   &trans                   &trans   &trans   &trans   &trans   &trans
+            >;
+        };
+        
+
+    };
+};
